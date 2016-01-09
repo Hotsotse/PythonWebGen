@@ -1,4 +1,7 @@
 import os, sys
+sys.path.append("..")
+sys.dont_write_bytecode = True
+import css
 
 indexContents=""""""
 title='title'
@@ -86,10 +89,11 @@ title=raw_input('What will the name of your website be? ')
 firstTab=raw_input('Your first tab? ')
 secondTab=raw_input('Your second tab? ')
 thirdTab=raw_input('Your third tab? ')	
-fourthTa=raw_input('Your fourth tab? ')	
+fourthTab=raw_input('Your fourth tab? ')	
 fifthTab=raw_input('Your fifth tab? ')	
 sixthTab=raw_input('Your sixth tab? ')
 firstTabHeader1=raw_input('Your first tab header 1?(see image) ')	
 firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
 firstTabP=raw_input('Your first tab paragraph?(see image) ')	
 createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
+css.createcss()
