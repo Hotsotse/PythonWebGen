@@ -1,6 +1,6 @@
 import os, sys
-sys.path.append("..")
-sys.dont_write_bytecode = True
+sys.path.append("..") #Making sure we're editing in main.py's directory
+sys.dont_write_bytecode = True #We don't want Python to generate .pyc files!
 import css
 
 indexContents=""""""
@@ -14,6 +14,8 @@ thirdTab='thirdTab'
 fourthTab='fourthTab'
 fifthTab='fifthTab'
 sixthTab='sixthTab'
+colorscheme=0
+
 
 def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP):
     os.mkdir("PythonWebGen", 0755 );
@@ -83,6 +85,7 @@ def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixth
 </body>
 </html>""" % {'title': title, 'firstTab': firstTab, 'secondTab': secondTab, 'thirdTab': thirdTab, 'fourthTab': fourthTab, 'fifthTab': fifthTab, 'sixthTab': sixthTab,'firstTabHeader1': firstTabHeader1, 'firstTabHeader2': firstTabHeader2, 'firstTabP': firstTabP}
     index.write(indexContents)
+    print "Index file is completed."
     index.close()
 
 title=raw_input('What will the name of your website be? ')
@@ -96,4 +99,5 @@ firstTabHeader1=raw_input('Your first tab header 1?(see image) ')
 firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
 firstTabP=raw_input('Your first tab paragraph?(see image) ')	
 createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
-css.createcss()
+colorscheme=raw_input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Terra\n") #TODO: Add custom color schemes
+css.createcss(colorscheme)
