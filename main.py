@@ -88,16 +88,33 @@ def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixth
     print "Index file is completed."
     index.close()
 
-title=raw_input('What will the name of your website be? ')
-firstTab=raw_input('Your first tab? ')
-secondTab=raw_input('Your second tab? ')
-thirdTab=raw_input('Your third tab? ')	
-fourthTab=raw_input('Your fourth tab? ')	
-fifthTab=raw_input('Your fifth tab? ')	
-sixthTab=raw_input('Your sixth tab? ')
-firstTabHeader1=raw_input('Your first tab header 1?(see image) ')	
-firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
-firstTabP=raw_input('Your first tab paragraph?(see image) ')	
-createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
+#title=raw_input('What will the name of your website be? ')
+#firstTab=raw_input('Your first tab? ')
+#secondTab=raw_input('Your second tab? ')
+#thirdTab=raw_input('Your third tab? ')	
+#fourthTab=raw_input('Your fourth tab? ')	
+#fifthTab=raw_input('Your fifth tab? ')	
+#sixthTab=raw_input('Your sixth tab? ')
+#firstTabHeader1=raw_input('Your first tab header 1?(see image) ')	
+#firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
+#firstTabP=raw_input('Your first tab paragraph?(see image) ')	
+
 colorscheme=raw_input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Terra\n") #TODO: Add custom color schemes
-css.createcss(colorscheme)
+
+header='#2c3e50'
+background='#95a5a6'
+box='#2980b9'
+
+if colorscheme==1:
+	header=='#E0E4CC'
+	background=='#69D2E7'
+	box=='#A7DBD8'
+if colorscheme==2:
+	header=='#ECD078'
+	background=='#53777A'
+	box=='#C02942'
+print colorscheme
+createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
+css.createcss(header, background, box)
+#css.createcss(sidebar, header, background, box)
+#(sidebar, header, background, box)

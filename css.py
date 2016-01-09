@@ -1,17 +1,13 @@
 import os
 import sys
 
-def createcss(colorscheme):
-    sidebar='#171717'
-    header='#2c3e50'
-    background='#95a5a6'
-    box='#2980b9'
-    print "0"
-    
-    os.mkdir("styles", 0755 );
-    os.chdir("styles")
-    css = open("global.css", 'a')
-    cssContents="""@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700,400,600");
+def createcss(header, background, box):
+	print "0"
+		
+	os.mkdir("styles", 0755 );
+	os.chdir("styles")
+	css = open("global.css", 'a')
+	cssContents="""@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700,400,600");
 
 * {
 	margin: 0;
@@ -57,7 +53,7 @@ div#container {
 .sidebar {
 	width: 250px;
 	/*height: 100%%;*/
-	background-color: %(sidebar)s ;
+	background-color: #171717;
 	float: left;
 }
 
@@ -157,8 +153,8 @@ a.mobile:active {
 		height: 100%%;
 		display: block;
 	}
-}"""  % {'background': background, 'box': box, 'header': header, 'sidebar': sidebar}
-    css.write(cssContents)
-    print "CSS file is completed."
-    css.close()
+}"""  % {'background': background, 'box': box, 'header': header}
+	css.write(cssContents)
+	print "CSS file is completed."
+	css.close()
 
