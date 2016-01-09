@@ -1,15 +1,16 @@
 import os
 import sys
 
-def createcss():
+def createcss(colorscheme):
+    sidebar='#171717'
+    header='#2c3e50'
+    background='#95a5a6'
+    box='#2980b9'
+    print "0"
+    
     os.mkdir("styles", 0755 );
     os.chdir("styles")
     css = open("global.css", 'a')
-    print "Name of the file: ", css.name
-    print "Closed or not : ", css.closed
-    print "Opening mode : ", css.mode
-    print "Softspace flag : ", css.softspace
-    print "Directory : ", os.getcwd()
     cssContents="""@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700,400,600");
 
 * {
@@ -27,9 +28,9 @@ a {
 }
 
 div#header {
-	width: 100%;
+	width: 100%%;
 	height: 50px;
-	background-color: #2c3e50;
+	background-color: %(header)s ;
 	margin: 0 auto;
 }
 
@@ -49,14 +50,14 @@ div#header {
 }
 
 div#container {
-	width: 100%;
+	width: 100%%;
 	margin: 0 auto;
 }
 
 .sidebar {
 	width: 250px;
-	/*height: 100%;*/
-	background-color: #171717;
+	/*height: 100%%;*/
+	background-color: %(sidebar)s ;
 	float: left;
 }
 
@@ -94,8 +95,8 @@ ul#nav li a.selected {
 .content {
 	width: auto;
 	margin-left: 250px;
-	height: 100%;
-	background-color: #95a5a6;
+	height: 100%%;
+	background-color: %(background)s ;
 	padding: 15px;
 }
 
@@ -111,7 +112,7 @@ div#box {
 div#box .box-top {
 	color: #fff;
 	text-shadow: 0px 1px #000;
-	background-color: #2980b9;
+	background-color: %(box)s ;
 	padding: 5px;
 	padding-left: 15px;
 	font-weight: 300;
@@ -137,7 +138,7 @@ a.mobile:active {
 
 @media only screen and (max-width: 320px) {
 	.sidebar {
-		width: 100%;
+		width: 100%%;
 		display: none;
 	}
 
@@ -153,10 +154,11 @@ a.mobile:active {
 	}
 
 	.sidebar {
-		height: 100%;
+		height: 100%%;
 		display: block;
 	}
-}""" # % {}
+}"""  % {'background': background, 'box': box, 'header': header, 'sidebar': sidebar}
     css.write(cssContents)
+    print "CSS file is completed."
     css.close()
 
