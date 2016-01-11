@@ -99,24 +99,27 @@ firstTabHeader1=raw_input('Your first tab header 1?(see image) ')
 firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
 firstTabP=raw_input('Your first tab paragraph?(see image) ')	
 
-colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n") #TODO: Add custom color schemes
+colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n 4: Custom\n")
 
 header='#2c3e50'
 background='#95a5a6'
 box='#2980b9'
 
 if colorscheme==1:
-	header='#FA6900'
-	background='#E0E4CC'
-	box='#F38630'
+    header='#FA6900'
+    background='#E0E4CC'
+    box='#F38630'
 if colorscheme==2:
-	header='#675267'
-	background='#53777A'
-	box='#C02942'
+    header='#675267'
+    background='#53777A'
+    box='#C02942'
 if colorscheme==3:
-	header='#5E412F'
-	background='#F07818'
-	box='#5E412F'
-print colorscheme
+    header='#5E412F'
+    background='#F07818'
+    box='#5E412F'
+if colorscheme==4:
+    header=raw_input("What would you like for header?(In Hex Code) ")
+    background=raw_input("What would you like for background?(In Hex Code) ")
+    box=raw_input("What would you like for box?(In Hex Code) ")
 createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
 css.createcss(header, background, box)
