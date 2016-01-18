@@ -1,3 +1,13 @@
+# Python Website Generator by: Alex Eikre
+#
+# This program is used to generate a website.
+# Allows you do choose your text, colorscheme,
+# etc. You'll most likely want to customize the 
+# html file.
+#
+# Last modified: Jan. 18, 2016
+
+
 import os, sys
 sys.path.append("..") #Making sure we're editing in main.py's directory
 sys.dont_write_bytecode = True #We don't want Python to generate .pyc files!
