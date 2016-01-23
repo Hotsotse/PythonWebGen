@@ -1,13 +1,3 @@
-# Python Website Generator by: Alex Eikre
-#
-# This program is used to generate a website.
-# Allows you do choose your text, colorscheme,
-# etc. You'll most likely want to customize the 
-# html file.
-#
-# Last modified: Jan. 18, 2016
-
-
 import os, sys
 sys.path.append("..") #Making sure we're editing in main.py's directory
 sys.dont_write_bytecode = True #We don't want Python to generate .pyc files!
@@ -16,26 +6,28 @@ import css
 indexContents=""""""
 title='title'
 firstTab='firstTab'
-firstTabHeader1='firstTabHeader1'
-firstTabHeader2='firstTabHeader2'
-firstTabP='firstTabP' #P as in paragraph
 secondTab='secondTab'
 thirdTab='thirdTab'
 fourthTab='fourthTab'
 fifthTab='fifthTab'
 sixthTab='sixthTab'
+tabs=[firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab]
+firstTabHeader1='firstTabHeader1'
+firstTabHeader2='firstTabHeader2'
+firstTabP='firstTabP' #P as in paragraph
 colorscheme=0
+tabCount=0
 
 
 def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP):
     os.mkdir("PythonWebGen", 0755 );
     os.chdir("PythonWebGen")
     index = open("index.html", 'a')
-    print "Name of the file: ", index.name
-    print "Closed or not : ", index.closed
-    print "Opening mode : ", index.mode
-    print "Softspace flag : ", index.softspace
-    print "Directory : ", os.getcwd()
+    #print "Name of the file: ", index.name
+    #print "Closed or not : ", index.closed
+    #print "Opening mode : ", index.mode
+    #print "Softspace flag : ", index.softspace
+    #print "Directory : ", os.getcwd()
     indexContents="""<html>
 <head>
 <title>%(title)s</title>
@@ -55,14 +47,13 @@ def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixth
 
 	<div id="container">
 		<div class="sidebar">
-			<ul id="nav">
-				<li><a class="selected" href="#">%(firstTab)s</a></li>
-				<li><a href="#">%(secondTab)s</a></li>
-				<li><a href="#">%(thirdTab)s</a></li>
-				<li><a href="#">%(fourthTab)s</a></li>
-				<li><a href="#">%(fifthTab)s</a></li>
-				<li><a href="#">%(sixthTab)s</a></li>
-			</ul>
+			<ul id="nav">"""
+    tabCount=int(input("How many tabs would you like? "))
+    for i in range(0,tabCount):
+        tab=input('Your '+str(tabs[i])+'?')
+        print(tab)
+        #indexContents=indexContents+"""<li><a class="selected" href="#">%(tab)s</a></li>""" % {'tab':tab}
+    indexContents=indexContents+"""</ul>
 		</div>
 		<div class="content">
 			<h1>%(firstTab)s</h1>
@@ -99,37 +90,27 @@ def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixth
     index.close()
 
 title=raw_input('What will the name of your website be? ')
-firstTab=raw_input('Your first tab? ')
-secondTab=raw_input('Your second tab? ')
-thirdTab=raw_input('Your third tab? ')	
-fourthTab=raw_input('Your fourth tab? ')	
-fifthTab=raw_input('Your fifth tab? ')	
-sixthTab=raw_input('Your sixth tab? ')
 firstTabHeader1=raw_input('Your first tab header 1?(see image) ')	
 firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
 firstTabP=raw_input('Your first tab paragraph?(see image) ')	
 
-colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n 4: Custom\n")
+colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n") #TODO: Add custom color schemes
 
 header='#2c3e50'
 background='#95a5a6'
 box='#2980b9'
 
 if colorscheme==1:
-    header='#FA6900'
-    background='#E0E4CC'
-    box='#F38630'
+	header='#FA6900'
+	background='#E0E4CC'
+	box='#F38630'
 if colorscheme==2:
-    header='#675267'
-    background='#53777A'
-    box='#C02942'
+	header='#675267'
+	background='#53777A'
+	box='#C02942'
 if colorscheme==3:
-    header='#5E412F'
-    background='#F07818'
-    box='#5E412F'
-if colorscheme==4:
-    header=raw_input("What would you like for header?(In Hex Code) ")
-    background=raw_input("What would you like for background?(In Hex Code) ")
-    box=raw_input("What would you like for box?(In Hex Code) ")
+	header='#5E412F'
+	background='#F07818'
+	box='#5E412F'
 createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP)
 css.createcss(header, background, box)
