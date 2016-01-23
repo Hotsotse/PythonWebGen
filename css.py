@@ -2,8 +2,6 @@ import os
 import sys
 
 def createcss(header, background, box):
-	print "0"
-		
 	os.mkdir("styles", 0755 );
 	os.chdir("styles")
 	css = open("global.css", 'a')
