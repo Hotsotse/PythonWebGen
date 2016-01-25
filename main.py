@@ -1,3 +1,12 @@
+# Python Website Generator by: Alex Eikre
+#
+# This program is used to generate a website.
+# Allows you do choose your text, colorscheme,
+# etc. You'll most likely want to customize the 
+# html file.
+#
+# Last modified: Jan. 25, 2016
+
 import os, sys
 sys.path.append("..") #Making sure we're editing in main.py's directory
 sys.dont_write_bytecode = True #We don't want Python to generate .pyc files!
@@ -17,6 +26,7 @@ firstTabHeader2='firstTabHeader2'
 firstTabP='firstTabP' #P as in paragraph
 colorscheme=0
 tabCount=0
+tabContents=""
 
 
 def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixthTab, firstTabHeader1, firstTabHeader2, firstTabP):
@@ -36,55 +46,46 @@ def createIndex(title, firstTab, secondTab, thirdTab, fourthTab, fifthTab, sixth
 <script src="scripts/jquery-1.11.1.min.js"></script>
 <script src="scripts/general.js"></script>
 </head>
-
 <body>
-
 	<div id="header">
 		<div class="logo"><a href="#"><span>%(title)s</span></a></div>
 	</div>
-
 	<a class="mobile" href="#">MENU</a>
-
 	<div id="container">
 		<div class="sidebar">
-			<ul id="nav">"""
+			<ul id="nav">""" % {'title': title}
     tabCount=int(input("How many tabs would you like? "))
+    tabContents=""
     for i in range(0,tabCount):
-        tab=input('Your '+str(tabs[i])+'?')
-        print(tab)
-        #indexContents=indexContents+"""<li><a class="selected" href="#">%(tab)s</a></li>""" % {'tab':tab}
+        tabs[i]=raw_input('Your '+str(tabs[i])+'? ')
+        indexContents=indexContents+"""<li><a class="selected" href="#">%(tab)s</a></li>""" % {'tab':tabs[i]}
     indexContents=indexContents+"""</ul>
 		</div>
 		<div class="content">
 			<h1>%(firstTab)s</h1>
 			<p>%(firstTabHeader1)s</p>
-
 			<div id="box">
 				<div class="box-top">%(firstTabHeader2)s</div>
 				<div class="box-panel">
 					%(firstTabP)s
 				</div>
 			</div>
-
 			<div id="box">
 				<div class="box-top">%(firstTabHeader2)s</div>
 				<div class="box-panel">
 					%(firstTabP)s
 				</div>
 			</div>
-
 			<div id="box">
 				<div class="box-top">%(firstTabHeader2)s</div>
 				<div class="box-panel">
 					%(firstTabP)s
 				</div>
 			</div>
-
 		</div>
 	</div>
-
 </body>
-</html>""" % {'title': title, 'firstTab': firstTab, 'secondTab': secondTab, 'thirdTab': thirdTab, 'fourthTab': fourthTab, 'fifthTab': fifthTab, 'sixthTab': sixthTab,'firstTabHeader1': firstTabHeader1, 'firstTabHeader2': firstTabHeader2, 'firstTabP': firstTabP}
+</html>""" % {'firstTab': firstTab, 'secondTab': secondTab, 'thirdTab': thirdTab, 'fourthTab': fourthTab, 'fifthTab': fifthTab, 'sixthTab': sixthTab,'firstTabHeader1': firstTabHeader1, 'firstTabHeader2': firstTabHeader2, 'firstTabP': firstTabP}
     index.write(indexContents)
     print "Index file is completed."
     index.close()
@@ -94,7 +95,7 @@ firstTabHeader1=raw_input('Your first tab header 1?(see image) ')
 firstTabHeader2=raw_input('Your first tab header 2?(see image) ')
 firstTabP=raw_input('Your first tab paragraph?(see image) ')	
 
-colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n") #TODO: Add custom color schemes
+colorscheme=input("Which Color Scheme would you like?\n 0: Default\n 1: Giant Goldfish\n 2: Thought Provoking\n 3: Papua New Guinea\n")
 
 header='#2c3e50'
 background='#95a5a6'
